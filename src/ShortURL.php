@@ -2,10 +2,17 @@
 
 namespace Mactape\ShortLinks;
 
-class ShortURL extends \Illuminate\Support\Facades\Facade
+use Carbon\CarbonInterface;
+use Illuminate\Support\Facades\Facade;
+
+/**
+ * @method static string generate(string $url, ?CarbonInterface $expires = null)
+ * @method static open(string $hash)
+ */
+class ShortURL extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Mactape\ShortLinks\UrlShortener::class;
+        return UrlShortener::class;
     }
 }

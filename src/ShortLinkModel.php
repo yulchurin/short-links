@@ -15,15 +15,15 @@ use Illuminate\Database\Eloquent\Prunable;
  * @property CarbonImmutable $created_at
  * @property CarbonImmutable $expires_at
  *
- * @method static Builder|ShortLink newModelQuery()
- * @method static Builder|ShortLink newQuery()
- * @method static Builder|ShortLink query()
- * @method static Builder|ShortLink whereCreatedAt($value)
- * @method static Builder|ShortLink whereExpiresAt($value)
- * @method static Builder|ShortLink whereHash($value)
- * @method static Builder|ShortLink whereId($value)
- * @method static Builder|ShortLink whereUrl($value)
- * @method static Builder|ShortLink whereUsed($value)
+ * @method static Builder|ShortLinkModel newModelQuery()
+ * @method static Builder|ShortLinkModel newQuery()
+ * @method static Builder|ShortLinkModel query()
+ * @method static Builder|ShortLinkModel whereCreatedAt($value)
+ * @method static Builder|ShortLinkModel whereExpiresAt($value)
+ * @method static Builder|ShortLinkModel whereHash($value)
+ * @method static Builder|ShortLinkModel whereId($value)
+ * @method static Builder|ShortLinkModel whereUrl($value)
+ * @method static Builder|ShortLinkModel whereUsed($value)
  */
 class ShortLinkModel extends Model
 {
