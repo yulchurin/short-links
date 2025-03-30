@@ -1,10 +1,8 @@
 ### Url Shortener
 
-[API Documentation](https://www.isdayoff.ru/extapi/)
+`composer require mactape/short-links`
 
 ### Usage
-
-`composer require mactape/short-links`
 
 ```
 
