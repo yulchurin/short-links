@@ -37,11 +37,11 @@ class UrlShortener
         $link = ShortLinkModel::query()->where('hash', $hash)->first();
 
         if ($link === null) {
-            throw new RuntimeException('No link found with hash: '.$hash);
+            throw new RuntimeException('No link found with hash presented');
         }
 
         if ($link->expires_at < CarbonImmutable::now()) {
-            throw new RuntimeException('Link expired.');
+            throw new RuntimeException('Link expired');
         }
 
         if ($link->used === true) {
@@ -56,7 +56,7 @@ class UrlShortener
 
     private function short(string $hash): string
     {
-        return Config::get('short-links.domain').$hash;
+        return rtrim(Config::get('short-links.domain'), '/')."/$hash";
     }
 
     private function hash(string $url): string
