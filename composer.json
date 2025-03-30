@@ -1,0 +1,35 @@
+{
+  "name": "mactape/short-links",
+  "description": "url shortener",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": "^8.3",
+    "laravel/framework": "^10.0|^11.0|^12.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mactape\\ShortLinks\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Tayfur Yulchurin",
+      "email": "yulchurin@gmail.com"
+    }
+  ],
+  "extra": {
+    "laravel": {
+      "aliases": {
+        "URLShort": "Mactape\\ShortLinks\\ShortURL"
+      },
+      "providers": [
+        "Mactape\\ShortLinks\\ShortLinksServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "stable",
+  "require-dev": {
+    "laravel/pint": "^1.21"
+  }
+}
