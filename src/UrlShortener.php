@@ -40,6 +40,10 @@ class UrlShortener
             throw new RuntimeException('No link found with hash: '.$hash);
         }
 
+        if ($link->expires_at < CarbonImmutable::now()) {
+            throw new RuntimeException('Link expired.');
+        }
+
         if ($link->used === true) {
             throw new RuntimeException('The link you provided is stale');
         }

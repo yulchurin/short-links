@@ -2,6 +2,15 @@
 
 `composer require mactape/short-links`
 
+`php artisan vendor:publish --provider="Mactape\ShortLinks\ShortLinksServiceProvider"`
+
+configure in `config/short-links.php`
+
+
+domain -> your application domain
+
+expiration (default 12) integer in hours. Model will be pruned
+
 ### Usage
 
 create hash for url
