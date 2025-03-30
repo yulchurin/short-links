@@ -44,7 +44,7 @@ class UrlShortener
             throw new RuntimeException('Link expired');
         }
 
-        if ($link->used === true) {
+        if (Config::get('short-links.allow_reuse_links') === false && $link->used === true) {
             throw new RuntimeException('The link you provided is stale');
         }
 
