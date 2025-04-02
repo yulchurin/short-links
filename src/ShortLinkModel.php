@@ -6,6 +6,7 @@ use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
+use Illuminate\Support\Facades\Config;
 
 /**
  * @property int $id
@@ -47,6 +48,8 @@ class ShortLinkModel extends Model
     {
         return static::query()
             ->where('expires_at', '<=', now())
-            ->orWhere('used', true);
+            ->when(Config::get('short-links.allow_reuse_links') === false, function (Builder $query) {
+                $query->orWhere('used', true);
+            });
     }
 }
