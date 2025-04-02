@@ -30,6 +30,8 @@ class ShortLinkModel extends Model
 {
     use Prunable;
 
+    protected $table = 'short_links';
+
     public const mixed UPDATED_AT = null;
 
     protected $fillable = [
