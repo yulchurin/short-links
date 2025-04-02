@@ -16,6 +16,7 @@ class UrlShortener
 {
     public function generate(string $url, ?CarbonInterface $expires = null): string
     {
+        $url = trim($url);
         $hash = $this->hash($url);
 
         ShortLinkModel::query()->firstOrCreate([
@@ -56,7 +57,7 @@ class UrlShortener
 
     private function short(string $hash): string
     {
-        return rtrim(Config::get('short-links.domain'), '/')."/$hash";
+        return rtrim(Config::get('short-links.domain'), '/')."/s/$hash";
     }
 
     private function hash(string $url): string
