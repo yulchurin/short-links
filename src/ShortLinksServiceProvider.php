@@ -6,6 +6,13 @@ use Illuminate\Support\ServiceProvider;
 
 class ShortLinksServiceProvider extends ServiceProvider
 {
+    public function register(): void
+    {
+        $this->mergeConfigFrom(
+            __DIR__.'/config/short-links.php', 'short-links'
+        );
+    }
+
     public function boot(): void
     {
         $this->publishes([
