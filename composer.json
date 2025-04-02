@@ -1,6 +1,10 @@
 {
   "name": "mactape/short-links",
   "description": "url shortener",
+  "keywords": [
+    "mactape",
+    "short-links"
+  ],
   "type": "project",
   "license": "MIT",
   "require": {

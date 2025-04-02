@@ -1,8 +1,29 @@
 ### Url Shortener
 
-`composer require mactape/short-links`
+- Laravel `^10.0`, `^11.0` or `^12.0`
+- PHP `^8.3`
 
-`php artisan vendor:publish --provider="Mactape\ShortLinks\ShortLinksServiceProvider"`
+## Installation
+
+You can install the package via composer:
+
+```bash
+composer require mactape/short-links
+```
+
+You can publish and run the migrations with:
+
+```bash
+php artisan vendor:publish --tag="short-links-migrations"
+php artisan migrate
+```
+
+You can publish the config file with:
+
+```bash
+php artisan vendor:publish --tag="short-links-config"
+```
+
 
 configure in `config/short-links.php`
 
@@ -27,10 +48,16 @@ _or navigate to_ `https://your-application-domain/s/{hash}`
 
 Add to
 
-`\App\Console\Kernel`
+`\App\Console\Kernel` `schedule` method if you use Laravel 10
 
-`schedule` method
 
 ```php
 $schedule->command('model:prune')->daily();
 ```
+
+Or
+```php
+Schedule::command('model:prune')->daily();
+```
+
+in your application's `routes/console.php` if you use Laravel >= 11

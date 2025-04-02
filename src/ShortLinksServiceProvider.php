@@ -10,12 +10,17 @@ class ShortLinksServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/config/short-links.php' => config_path('short-links.php'),
-        ]);
+        ], 'short-links-config');
 
         $this->loadRoutesFrom(__DIR__.'/routes/shortener.php');
 
-        $this->publishesMigrations([
-            __DIR__.'/database/migrations' => database_path('migrations'),
-        ]);
+        $dateString = now()->startOfYear()->format('Y_m_d_His');
+
+        $stub = __DIR__.'/database/migrations/create_short_links_table.php.stub';
+        $migration = database_path("migrations/{$dateString}_create_short_links_table.php");
+
+        $this->publishes([
+            $stub => $migration,
+        ], 'short-links-migrations');
     }
 }
