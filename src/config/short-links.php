@@ -4,6 +4,8 @@ return [
 
     'domain' => env('APP_URL'),
 
+    'table' => 'short_links',
+
     /*
      * --------------------------------------------------------------------------
      *  Expiration Time

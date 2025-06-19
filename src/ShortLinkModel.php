@@ -30,8 +30,6 @@ class ShortLinkModel extends Model
 {
     use Prunable;
 
-    protected $table = 'short_links';
-
     public const mixed UPDATED_AT = null;
 
     protected $fillable = [
@@ -45,6 +43,13 @@ class ShortLinkModel extends Model
         'used' => 'boolean',
         'expires_at' => 'immutable_datetime',
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setTable(config('short-links.table', 'short_links'));
+    }
 
     public function prunable(): Builder
     {

@@ -62,6 +62,23 @@ class UrlShortener
 
     private function hash(string $url): string
     {
-        return hash('adler32', $url);
+        $binary = hash('xxh3', $url, true);
+        $int = unpack('J', $binary)[1];
+
+        return $this->toBase62($int);
+    }
+
+    private function toBase62(int $number): string
+    {
+        $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $base = strlen($chars);
+        $result = '';
+
+        do {
+            $result = $chars[$number % $base] . $result;
+            $number = intdiv($number, $base);
+        } while ($number > 0);
+
+        return $result;
     }
 }
